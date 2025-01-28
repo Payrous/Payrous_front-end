@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button'
 import { Mail, Check, X } from 'lucide-react'
 import emailjs from '@emailjs/browser'
 
-
 const Waitlist = () => {
     const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
     const clientTemplateID = process.env.NEXT_PUBLIC_CLIENT_EMAILJS_TEMPLATE_ID;
