@@ -89,13 +89,6 @@ const Waitlist = () => {
         }
     };
 
-    console.log('serviceID', serviceID);
-    console.log('clientTemplateID', clientTemplateID);
-    console.log('publicKey', publicKey);
-    console.log('replyToEmail', replyToEmail);
-    console.log('adminTemplateID', adminTemplateID);
-
-
     return (
         <div className='bg-[#1C2730] h-screen'>
             <Image
