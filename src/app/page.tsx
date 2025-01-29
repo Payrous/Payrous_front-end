@@ -109,21 +109,21 @@ const Waitlist = () => {
                     objectFit: 'cover',
                 }}
             />
-            <div className='flex flex-col w-screen items-center justify-center h-screen text-white'>
+            <div className='flex flex-col w-screen items-center justify-center h-screen text-white '>
                 <div className="w-56 h-0.5 bg-gradient-to-r from-transparent via-[#D98837] to-transparent"></div>
 
-                <h1 className='font-normal text-base pt-2'>Payrous | Bulk transaction at your fingertips</h1>
+                <h1 className='font-normal text-xs md:text-base pt-2'>Payrous | Bulk transaction at your fingertips</h1>
                 <div className='py-5 flex flex-col items-center'>
-                    <h2 className='font-bold text-8xl text-source-sans'>Join the waitlist for</h2>
-                    <h2 className='font-bold text-8xl text-[#D98837] italic text-source-sans'>Payrous</h2>
+                    <h2 className='font-bold text-4xl md:text-7xl lg:text-8xl text-source-sans'>Join the waitlist for</h2>
+                    <h2 className='font-bold  text-4xl md:text-7xl lg:text-8xl text-[#D98837] italic text-source-sans'>Payrous</h2>
                 </div>
 
-                <p className='font-normal text-xl w-[750px] text-center px-5'>
+                <p className='font-normal text-xs md:text-xl w-[350px] md:w-[650px] lg:w-[750px] text-center px-5'>
                     Discover the seamless solution for making bulk transactions and being charged a single gas fee
                 </p>
 
                 <div className="flex flex-col py-10">
-                    <div className='relative flex gap-2'>
+                    <div className='relative flex flex-col md:flex md:flex-row items-center gap-5 md:gap-2'>
                         <div className="absolute left-5 top-[18px] z-10">
                             <Mail 
                                 size={20}
@@ -133,7 +133,7 @@ const Waitlist = () => {
                         </div>
                         <Input
                             type="email"
-                            className={`placeholder-white-400 relative px-12 w-[350px] h-14 rounded-xl transition-colors duration-200
+                            className={`placeholder-white-400 relative px-12 w-[310px] md:w-[350px] h-14 rounded-xl transition-colors duration-200
                                 ${isFocused || email ? 'bg-white text-black placeholder-gray-400' : 'bg-transparent text-white placeholder-white'}
                             `}
                             placeholder="Your email address"
