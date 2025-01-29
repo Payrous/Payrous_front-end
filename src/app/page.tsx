@@ -56,7 +56,6 @@ const Waitlist = () => {
                 {
                     to_email: 'help.payrous@gmail.com',
                     from_email: email,
-                    message: `New waitlist signup from ${email}`,
                     time: new Date().toLocaleString(),
                 },
                 publicKey 
