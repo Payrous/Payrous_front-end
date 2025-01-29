@@ -115,19 +115,20 @@ const Waitlist = () => {
   }
 
   return (
-    <div className='bg-[#1C2730] h-screen'>
-      <Image
-        alt="waitbg"
-        src={waitBG}
-        placeholder="blur"
-        quality={100}
-        fill
-        sizes="100vw"
-        style={{
-          objectFit: 'cover',
-        }}
-      />
-      <div className='flex flex-col w-screen items-center justify-center h-screen text-white'>
+    <div className='bg-[#1C2730] h-screen relative'> 
+    <Image
+      alt="waitbg"
+      src={waitBG}
+      placeholder="blur"
+      quality={100}
+      fill
+      sizes="100vw"
+      style={{
+        objectFit: 'cover',
+      }}
+      className="z-0" 
+    />
+      <div className='flex flex-col w-screen items-center justify-center h-screen text-white relative z-10'>
         <div className="w-56 h-0.5 bg-gradient-to-r from-transparent via-[#D98837] to-transparent"></div>
 
         <h1 className='font-normal text-xs md:text-base pt-2'>Payrous | Bulk transaction at your fingertips</h1>
@@ -140,7 +141,7 @@ const Waitlist = () => {
           Discover the seamless solution for making bulk transactions and being charged a single gas fee
         </p>
 
-        <div className="flex flex-col py-10">
+        <div className="flex flex-col py-10 relative z-20">
           <div className='relative flex flex-col md:flex md:flex-row items-center gap-5 md:gap-2'>
             <div className="absolute left-5 top-[18px] z-10">
               <Mail
@@ -169,10 +170,12 @@ const Waitlist = () => {
             >
               {isSubmitting ? 'Submitting...' : 'Join Waitlist!'}
             </Button>
+
           </div>
+          <Captcha onChange={setCaptchaToken} />
+
         </div>
 
-        <Captcha onChange={setCaptchaToken} />
 
         {alertState.show && (
           <div className={`${
