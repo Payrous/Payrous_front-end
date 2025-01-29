@@ -18,7 +18,7 @@ export default function Captcha({ onChange }: CaptchaProps) {
   return (
     <div className="my-4">
       <ReCAPTCHA
-        sitekey= siteID ?? ""
+        sitekey={siteID ?? ""}
         onChange={handleCaptchaChange}
       />
       {token && <p className="text-green-500 mt-2">CAPTCHA verified!</p>}
