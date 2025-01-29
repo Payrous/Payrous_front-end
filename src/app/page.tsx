@@ -76,7 +76,6 @@ const Waitlist = () => {
             to_email: 'help.payrous@gmail.com',
             from_email: email,
             time: new Date().toLocaleString(),
-            captcha_token: captchaToken // Include CAPTCHA token
           },
           publicKey
         ),
@@ -87,7 +86,6 @@ const Waitlist = () => {
           {
             to_email: email,
             reply_to: 'help.payrous@gmail.com',
-            captcha_token: captchaToken // Include CAPTCHA token
           },
           publicKey
         )
