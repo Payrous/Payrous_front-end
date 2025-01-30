@@ -6,8 +6,41 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Mail, Check, X } from 'lucide-react'
 import emailjs from '@emailjs/browser'
+import Captcha from '@/components/Captcha'
+
 
 const Waitlist = () => {
+
+    //captcha
+
+    const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+    const [message, setMessage] = useState<string>("");
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (!captchaToken) {
+            setMessage("Please complete the CAPTCHA.");
+            return;
+        }
+
+        // Send the form data and CAPTCHA token to your backend
+        const response = await fetch("/api/submit-form", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ captchaToken }),
+        });
+
+        const result = await response.json();
+        if (result.success) {
+            setMessage("Form submitted successfully!");
+        } else {
+            setMessage("CAPTCHA verification failed. Please try again.");
+        }
+    };
+
     const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
     const clientTemplateID = process.env.NEXT_PUBLIC_CLIENT_EMAILJS_TEMPLATE_ID;
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
@@ -51,26 +84,26 @@ const Waitlist = () => {
         try {
             // Send email to help.payrous@gmail.com
             await emailjs.send(
-                serviceID ?? "",  
-                adminTemplateID ?? "", 
+                serviceID ?? "",
+                adminTemplateID ?? "",
                 {
                     to_email: 'help.payrous@gmail.com',
                     from_email: email,
                     message: `New waitlist signup from ${replyToEmail}`,
                     time: new Date().toLocaleString(),
                 },
-                publicKey 
+                publicKey
             );
 
             // Send confirmation email to user
             await emailjs.send(
-              serviceID ?? "", 
-              clientTemplateID ?? "", 
+                serviceID ?? "",
+                clientTemplateID ?? "",
                 {
                     to_email: replyToEmail,
                     reply_to: 'help.payrous@gmail.com',
                 },
-                publicKey 
+                publicKey
             );
 
             setAlertState({
@@ -125,7 +158,7 @@ const Waitlist = () => {
                 <div className="flex flex-col py-10">
                     <div className='relative flex flex-col md:flex md:flex-row items-center gap-5 md:gap-2'>
                         <div className="absolute left-5 top-[18px] z-10">
-                            <Mail 
+                            <Mail
                                 size={20}
                                 stroke={isFocused || email ? "#6B7280" : "#FFFFFF"}
                                 strokeWidth={1.5}
@@ -144,6 +177,7 @@ const Waitlist = () => {
                         />
 
                         <Button
+
                             onClick={handleSubmission}
                             type="submit"
                             disabled={isSubmitting}
@@ -154,6 +188,9 @@ const Waitlist = () => {
                     </div>
                 </div>
 
+                <Captcha onChange={setCaptchaToken} />
+                {message && <p className="mt-4 text-red-500">{message}</p>}
+
                 {alertState.show && alertState.type === 'success' && (
                     <div className="bg-[#1C2730]/90 backdrop-blur-sm rounded-lg p-4 flex items-center gap-3 max-w-lg mx-auto mt-6">
                         <div className="bg-[#D98837] rounded-full p-1">
@@ -162,7 +199,7 @@ const Waitlist = () => {
                         <div className="flex-1 text-gray-300">
                             {alertState.message}
                         </div>
-                        <button 
+                        <button
                             onClick={() => setAlertState({ ...alertState, show: false })}
                             className="text-gray-400 hover:text-white transition-colors"
                         >
@@ -174,7 +211,7 @@ const Waitlist = () => {
                 {alertState.show && alertState.type === 'error' && (
                     <div className="bg-red-950/90 backdrop-blur-sm text-red-200 rounded-lg p-4 flex items-center gap-3 max-w-lg mx-auto mt-6">
                         <div className="text-red-200">{alertState.message}</div>
-                        <button 
+                        <button
                             onClick={() => setAlertState({ ...alertState, show: false })}
                             className="text-red-400 hover:text-red-200 transition-colors ml-auto"
                         >
