@@ -6,10 +6,12 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     const { captchaToken } = req.body;
+      
+    const secretID = process.env.NEXT_PUBLIC_SECRET_ID;
 
     // Verify the CAPTCHA token with Google
     const response = await fetch(
-      `https://www.google.com/recaptcha/api/siteverify?secret=6LcYE8cqAAAAAB-8z1MdFeqFdceX3veu-aRQRKfe&response=${captchaToken}`,
+      `https://www.google.com/recaptcha/api/siteverify?secret=${secretID}&response=${captchaToken}`,
       {
         method: "POST",
       }

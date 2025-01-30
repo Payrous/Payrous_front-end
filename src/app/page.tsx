@@ -13,6 +13,7 @@ const Waitlist = () => {
 
     //captcha
 
+  
     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
     const [message, setMessage] = useState<string>("");
 
