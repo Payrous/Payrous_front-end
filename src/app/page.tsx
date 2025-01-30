@@ -43,7 +43,7 @@ const Waitlist = () => {
 
     const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
     const clientTemplateID = process.env.NEXT_PUBLIC_CLIENT_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_ID;
     const replyToEmail = process.env.NEXT_PUBLIC_REPLY_TO_EMAIL;
     const adminTemplateID = process.env.NEXT_PUBLIC_ADMIN_EMAILJS_TEMPLATE_ID;
     const [email, setEmail] = useState<string>('');
@@ -89,7 +89,6 @@ const Waitlist = () => {
                 {
                     to_email: 'help.payrous@gmail.com',
                     from_email: email,
-                    message: `New waitlist signup from ${replyToEmail}`,
                     time: new Date().toLocaleString(),
                 },
                 publicKey
@@ -100,7 +99,7 @@ const Waitlist = () => {
                 serviceID ?? "",
                 clientTemplateID ?? "",
                 {
-                    to_email: replyToEmail,
+                    to_email: email,
                     reply_to: 'help.payrous@gmail.com',
                 },
                 publicKey
@@ -121,13 +120,6 @@ const Waitlist = () => {
             setIsSubmitting(false);
         }
     };
-
-    console.log('serviceID', serviceID);
-    console.log('clientTemplateID', clientTemplateID);
-    console.log('publicKey', publicKey);
-    console.log('replyToEmail', replyToEmail);
-    console.log('adminTemplateID', adminTemplateID);
-
 
     return (
         <div className='bg-[#1C2730] h-screen'>
