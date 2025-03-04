@@ -126,16 +126,16 @@ const Waitlist = () => {
       }}
       className="z-0" 
     />
-      <div className='flex flex-col w-screen items-center justify-center h-screen text-white relative z-10'>
+      <div className='flex flex-col w-screen items-center justify-center h-screen text-white relative z-10 '>
         <div className="w-56 h-0.5 bg-gradient-to-r from-transparent via-[#D98837] to-transparent"></div>
 
-        <h1 className='font-normal text-xs md:text-base pt-2'>Payrous | Bulk transaction at your fingertips</h1>
-        <div className='py-5 flex flex-col items-center'>
-          <h2 className='font-bold text-4xl md:text-7xl lg:text-8xl text-source-sans'>Join the waitlist for</h2>
-          <h2 className='font-bold text-4xl md:text-7xl lg:text-8xl text-[#D98837] italic text-source-sans'>Payrous</h2>
+        <h1 className='font-normal font-mulish text-sm md:text-base pt-2'>Payrous | Bulk transaction at your fingertips</h1>
+        <div className='py-7 md:py-6 flex flex-col items-center text-center'>
+          <h2 className='font-bold text-5xl md:text-7xl lg:text-8xl text-source-sans w-[400px] md:w-full '>Join the waitlist for</h2>
+          <h2 className='font-bold text-5xl md:text-7xl lg:text-8xl text-[#D98837] italic text-source-sans'>Payrous</h2>
         </div>
 
-        <p className='font-normal text-xs md:text-xl w-[350px] md:w-[650px] lg:w-[750px] text-center px-5'>
+        <p className='font-normal font-mulish text-xl md:text-xl w-[400px] md:w-[650px] lg:w-[750px] text-center px-5'>
           Discover the seamless solution for making bulk transactions and being charged a single gas fee
         </p>
 
@@ -150,7 +150,7 @@ const Waitlist = () => {
             </div>
             <Input
               type="email"
-              className={`placeholder-white-400 relative px-12 w-[310px] md:w-[350px] h-14 rounded-xl transition-colors duration-200
+              className={`placeholder-white-400 relative px-12 w-[330px] md:w-[350px] h-14 rounded-xl transition-colors duration-200
                 ${isFocused || email ? 'bg-white text-black placeholder-gray-400' : 'bg-transparent text-white placeholder-white'}
               `}
               placeholder="Your email address"
@@ -164,7 +164,7 @@ const Waitlist = () => {
               onClick={handleSubmission}
               type="submit"
               disabled={isSubmitting}
-              className='text-white bg-[#F3993E80] hover:bg-[#D98837] shadow-white shadow-[inset_-4px_-4px_10px_0px_rgba(0,0,0,0.3)] w-40 h-14 rounded-xl text-base font-semibold text-opacity-50'
+              className='text-white bg-[#F3993E80] hover:bg-[#D98837] shadow-white shadow-[inset_-4px_-4px_10px_0px_rgba(0,0,0,0.3)] w-[330px] md:w-40 h-14 rounded-xl text-base font-semibold text-opacity-50'
             >
               {isSubmitting ? 'Submitting...' : 'Join Waitlist!'}
             </Button>
